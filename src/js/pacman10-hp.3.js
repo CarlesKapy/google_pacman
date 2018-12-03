@@ -35,7 +35,8 @@ function () {
       }
     },
     m = [0, 7, 17, 32],
-    n = [{
+    n = [
+    {
       x: 5,
       y: 1,
       w: 56
@@ -43,7 +44,7 @@ function () {
     {
       x: 5,
       y: 4,
-      w: 5
+      w: 56
     },
     {
       x: 5,
@@ -95,21 +96,48 @@ function () {
       y: 4,
       w: 26
     },
+        /*
     {
       x: 13,
       y: 5,
       w: 7
     },
+    */
     {
-      x: 13,
+      x: 12,
       y: 5,
-      h: 4
+      w: 5
     },
     {
-      x: 13,
+      x: 12,
+      y: 6,
+      w: 5
+    },
+    {
+      x: 12,
+      y: 7,
+      w: 5
+    },
+    {
+      x: 14,
       y: 8,
       w: 3
     },
+    {
+      x: 12,
+      y: 9,
+      w: 5
+    },
+        {
+            x: 12,
+            y: 10,
+            w: 5
+        },
+        {
+            x: 12,
+            y: 11,
+            w: 5
+        },
     {
       x: 56,
       y: 4,
@@ -120,8 +148,13 @@ function () {
       y: 4,
       w: 13
     },
+        {
+            x: 48,
+            y: 4,
+            h: 9
+        },
     {
-      x: 48,
+      x: 44,
       y: 1,
       h: 12
     },
@@ -200,16 +233,19 @@ function () {
       y: 15,
       w: 12
     },
+
     {
-      x: 27,
+      x: 35,
       y: 4,
       h: 9
     },
+/*
     {
       x: 52,
       y: 9,
       w: 5
     },
+    */
     {
       x: 56,
       y: 8,
@@ -222,6 +258,9 @@ function () {
       w: 9,
       type: 1
     }],
+
+
+
     o = [{
       x: 1,
       y: 8,
@@ -257,6 +296,7 @@ function () {
       y: 15,
       w: 2
     }],
+
     p = [{
       x: 5,
       y: 15
@@ -285,6 +325,7 @@ function () {
       x: 63,
       y: 8
     }],
+
     r = {
       1: [{
         x: 39.5,
@@ -358,8 +399,10 @@ function () {
         scatterY: 20
       }]
     },
-    s = [32, 312],
-    v = [80, 312],
+    /*s = [32, 312],*/
+    s = [64, 624],
+    /*v = [80, 312],*/
+    v = [160, 624],
     w = {
       0: 0.16,
       1: 0.23,
@@ -1176,17 +1219,18 @@ function () {
   }
   E.prototype.A = function () {
     var b = r[g.playerCount][this.id];
-    this.pos = [b.y * 8, b.x * 8];
+    this.pos = [b.y * (8 * g.tmtFactor), b.x * (8 * g.tmtFactor)];
     this.posDelta = [0, 0];
-    this.tilePos = [b.y * 8, b.x * 8];
-    this.targetPos = [b.scatterY * 8, b.scatterX * 8];
-    this.scatterPos = [b.scatterY * 8, b.scatterX * 8];
+    this.tilePos = [b.y * (8 * g.tmtFactor), b.x * (8 * g.tmtFactor)];
+    this.targetPos = [b.scatterY * (8 * g.tmtFactor), b.scatterX * (8 * g.tmtFactor)];
+    this.scatterPos = [b.scatterY * (8 * g.tmtFactor), b.scatterX * (8 * g.tmtFactor)];
     this.lastActiveDir = this.dir = b.dir;
     this.physicalSpeed = this.requestedDir = this.nextDir = 0;
     this.c(0);
     this.reverseDirectionsNext = this.freeToLeavePen = this.modeChangedWhileInPen = this.eatenInThisFrightMode = e;
     this.l()
   };
+
   E.prototype.createElement = function () {
     this.el = document.createElement("div");
     this.el.className = "pcm-ac";
@@ -1196,6 +1240,7 @@ function () {
     this.elPos = [0, 0];
     this.elBackgroundPos = [0, 0]
   };
+
   E.prototype.a = function (b) {
     var c = this.mode;
     this.mode = b;
@@ -1345,7 +1390,7 @@ function () {
     var c = this.tilePos,
       d = l[this.dir],
       f = [c[0], c[1]];
-    f[d.axis] += d.increment * 8;
+    f[d.axis] += d.increment * (8 * g.tmtFactor);
     var h = g.playfield[f[0]][f[1]];
     if (b && !h.intersection) h = g.playfield[c[0]][c[1]];
     if (h.intersection) switch (this.mode) {
@@ -1402,6 +1447,7 @@ function () {
     this.tilePos[0] = b[0];
     this.tilePos[1] = b[1]
   };
+
   E.prototype.t = function () {
     var b = this.tilePos;
     switch (this.dir) {
@@ -1428,16 +1474,17 @@ function () {
     }
   };
   E.prototype.n = function () {
-    if (this.pos[0] == q[0].y * 8 && this.pos[1] == q[0].x * 8) {
-      this.pos[0] = q[1].y * 8;
-      this.pos[1] = (q[1].x - 1) * 8
-    } else if (this.pos[0] == q[1].y * 8 && this.pos[1] == q[1].x * 8) {
-      this.pos[0] = q[0].y * 8;
-      this.pos[1] = (q[0].x + 1) * 8
+    if (this.pos[0] == q[0].y * (8 * g.tmtFactor) && this.pos[1] == q[0].x * (8 * g.tmtFactor)) {
+      this.pos[0] = q[1].y * (8 * g.tmtFactor);
+      this.pos[1] = (q[1].x - 1) * (8 * g.tmtFactor)
+    } else if (this.pos[0] == q[1].y * (8 * g.tmtFactor) && this.pos[1] == q[1].x * (8 * g.tmtFactor)) {
+      this.pos[0] = q[0].y * (8 * g.tmtFactor);
+      this.pos[1] = (q[0].x + 1) * (8 * g.tmtFactor)
     }
     this.mode == 8 && this.pos[0] == s[0] && this.pos[1] == s[1] && this.a(64);
     if (!this.ghost && this.pos[0] == v[0] && (this.pos[1] == v[1] || this.pos[1] == v[1] + 8)) g.eatFruit(this.id)
   };
+
   E.prototype.u = function () {
     this.n();
     this.ghost && this.i(e);
@@ -1457,16 +1504,18 @@ function () {
       this.c(0)
     }
   };
+
   E.prototype.o = function () {
-    var b = this.pos[0] / 8,
-      c = this.pos[1] / 8,
-      d = [Math.round(b) * 8, Math.round(c) * 8];
+    var b = this.pos[0] / (8 * g.tmtFactor),
+      c = this.pos[1] / (8 * g.tmtFactor),
+      d = [Math.round(b) * (8 * g.tmtFactor), Math.round(c) * (8 * g.tmtFactor)];
     if (d[0] != this.tilePos[0] || d[1] != this.tilePos[1]) this.p(d);
     else {
-      b = [Math.floor(b) * 8, Math.floor(c) * 8];
+      b = [Math.floor(b) * (8 * g.tmtFactor), Math.floor(c) * (8 * g.tmtFactor)];
       this.pos[1] == b[1] && this.pos[0] == b[0] && this.u()
     }!this.ghost && this.nextDir && g.playfield[d[0]][d[1]].intersection && this.nextDir & g.playfield[d[0]][d[1]].allowedDir && this.t()
   };
+
   E.prototype.B = function () {
     if (this.id == g.playerCount && g.dotsRemaining < g.levels.elroyDotsLeftPart1 && this.mode == 2 && (!g.lostLifeOnThisLevel || g.actors[g.playerCount + 3].mode != 16)) {
       var b = g.actors[this.targetPlayerId];
@@ -1521,14 +1570,15 @@ function () {
       return
     } else this.routineMoveId = 0;
     b = A[this.routineToFollow][this.routineMoveId];
-    this.pos[0] = b.y * 8;
-    this.pos[1] = b.x * 8;
+    this.pos[0] = b.y * (8 * g.tmtFactor);
+    this.pos[1] = b.x * (8 * g.tmtFactor);
     this.dir = b.dir;
     this.physicalSpeed = 0;
     this.speedIntervals = g.getSpeedIntervals(b.speed);
     this.proceedToNextRoutineMove = e;
     this.b()
   };
+
   E.prototype.m = function () {
     var b = A[this.routineToFollow][this.routineMoveId];
     if (b) if (this.speedIntervals[g.intervalTime]) {
@@ -1537,15 +1587,15 @@ function () {
       switch (this.dir) {
       case 1:
       case 4:
-        if (this.pos[c.axis] < b.dest * 8) {
-          this.pos[c.axis] = b.dest * 8;
+        if (this.pos[c.axis] < b.dest * (8 * g.tmtFactor)) {
+          this.pos[c.axis] = b.dest * (8 * g.tmtFactor);
           this.proceedToNextRoutineMove = a
         }
         break;
       case 2:
       case 8:
-        if (this.pos[c.axis] > b.dest * 8) {
-          this.pos[c.axis] = b.dest * 8;
+        if (this.pos[c.axis] > b.dest * (8 * g.tmtFactor)) {
+          this.pos[c.axis] = b.dest * (8 * g.tmtFactor);
           this.proceedToNextRoutineMove = a
         }
         break
@@ -1601,7 +1651,9 @@ function () {
       }
     }
   };
+  // situar actores
   E.prototype.k = function () {
+    //if (!this.ghost) console.log(this.pos);
     var b = g.getPlayfieldX(this.pos[1] + this.posDelta[1]),
       c = g.getPlayfieldY(this.pos[0] + this.posDelta[0]);
     if (this.elPos[0] != c || this.elPos[1] != b) {
@@ -1803,6 +1855,7 @@ function () {
     return [c, b]
   };
   E.prototype.b = function () {
+    //debugger;
     this.k();
     var b = [0, 0];
     b = g.gameplayMode == 8 || g.gameplayMode == 14 ? [0, 3] : this.ghost ? this.r() : this.s();
@@ -1827,7 +1880,7 @@ function () {
     return Math.sqrt((c[1] - b[1]) * (c[1] - b[1]) + (c[0] - b[0]) * (c[0] - b[0]))
   };
   g.getPlayfieldX = function (b) {
-    return b + -32
+    return b + (-32 * this.tmtFactor);
   };
   g.getPlayfieldY = function (b) {
     return b + 0
@@ -1875,24 +1928,31 @@ function () {
     }
   };
   g.determinePlayfieldDimensions = function () {
+    console.log("Determina playfield dimensions");
     g.playfieldWidth = 0;
     g.playfieldHeight = 0;
     for (var b in n) {
       var c = n[b];
       if (c.w) {
         c = c.x + c.w - 1;
+        c = c * g.tmtFactor;
         if (c > g.playfieldWidth) g.playfieldWidth = c
       } else {
         c = c.y + c.h - 1;
+        c = c * g.tmtFactor;
         if (c > g.playfieldHeight) g.playfieldHeight = c
       }
     }
+
+    console.log(g.playfieldWidth, g.playfieldHeight);
   };
+
   g.preparePlayfield = function () {
+    console.log("Prepare Playfield");
     g.playfield = [];
     for (var b = 0; b <= g.playfieldHeight + 1; b++) {
-      g.playfield[b * 8] = [];
-      for (var c = -2; c <= g.playfieldWidth + 1; c++) g.playfield[b * 8][c * 8] = {
+      g.playfield[b * 8 * g.tmtFactor] = [];
+      for (var c = -2; c <= g.playfieldWidth + 1; c++) g.playfield[b * 8 * g.tmtFactor][c * 8 * g.tmtFactor] = {
         path: 0,
         dot: 0,
         intersection: 0
@@ -1900,79 +1960,97 @@ function () {
     }
   };
   g.preparePaths = function () {
+    console.log("Prepare paths");
     for (var b in n) {
       var c = n[b],
         d = c.type;
       if (c.w) {
-        for (var f = c.y * 8, h = c.x * 8; h <= (c.x + c.w - 1) * 8; h += 8) {
+        for (var f = c.y * (8 * g.tmtFactor), h = c.x * (8 * g.tmtFactor); h <= (c.x + c.w - 1) * (8 * g.tmtFactor); h += (8 * g.tmtFactor)) {
           g.playfield[f][h].path = a;
           if (g.playfield[f][h].dot == 0) {
             g.playfield[f][h].dot = 1;
             g.dotsRemaining++
           }
-          g.playfield[f][h].type = !d || h != c.x * 8 && h != (c.x + c.w - 1) * 8 ? d : 0
+          g.playfield[f][h].type = !d || h != c.x * (8 * g.tmtFactor) && h != (c.x + c.w - 1) * (8 * g.tmtFactor) ? d : 0;
         }
-        g.playfield[f][c.x * 8].intersection = a;
-        g.playfield[f][(c.x + c.w - 1) * 8].intersection = a
+        g.playfield[f][c.x * (8 * g.tmtFactor)].intersection = a;
+        g.playfield[f][(c.x + c.w - 1) * (8 * g.tmtFactor)].intersection = a;
       } else {
-        h = c.x * 8;
-        for (f = c.y * 8; f <= (c.y + c.h - 1) * 8; f += 8) {
+        h = c.x * (8 * g.tmtFactor);
+        for (f = c.y * (8 * g.tmtFactor); f <= (c.y + c.h - 1) * (8 * g.tmtFactor); f += (8 * g.tmtFactor)) {
           if (g.playfield[f][h].path) g.playfield[f][h].intersection = a;
           g.playfield[f][h].path = a;
           if (g.playfield[f][h].dot == 0) {
             g.playfield[f][h].dot = 1;
             g.dotsRemaining++
           }
-          g.playfield[f][h].type = !d || f != c.y * 8 && f != (c.y + c.h - 1) * 8 ? d : 0
+          g.playfield[f][h].type = !d || f != c.y * (8 * g.tmtFactor) && f != (c.y + c.h - 1) * (8 * g.tmtFactor) ? d : 0;
         }
-        g.playfield[c.y * 8][h].intersection = a;
-        g.playfield[(c.y + c.h - 1) * 8][h].intersection = a
+        g.playfield[c.y * (8 * g.tmtFactor)][h].intersection = a;
+        g.playfield[(c.y + c.h - 1) * (8 * g.tmtFactor)][h].intersection = a
       }
     }
-    for (b in o) if (o[b].w) for (h = o[b].x * 8; h <= (o[b].x + o[b].w - 1) * 8; h += 8) {
-      g.playfield[o[b].y * 8][h].dot = 0;
+    for (b in o) if (o[b].w) for (h = o[b].x * (8 * g.tmtFactor); h <= (o[b].x + o[b].w - 1) * (8 * g.tmtFactor); h += (8 * g.tmtFactor)) {
+      g.playfield[o[b].y * (8 * g.tmtFactor)][h].dot = 0;
       g.dotsRemaining--
-    } else for (f = o[b].y * 8; f <= (o[b].y + o[b].h - 1) * 8; f += 8) {
-      g.playfield[f][o[b].x * 8].dot = 0;
+    } else for (f = o[b].y * (8 * g.tmtFactor); f <= (o[b].y + o[b].h - 1) * (8 * g.tmtFactor); f += (8 * g.tmtFactor)) {
+      g.playfield[f][o[b].x * (8 * g.tmtFactor)].dot = 0;
       g.dotsRemaining--
     }
+    console.log("Paths finished");
   };
+
+
   g.prepareAllowedDirections = function () {
-    for (var b = 8; b <= g.playfieldHeight * 8; b += 8) for (var c = 8; c <= g.playfieldWidth * 8; c += 8) {
+    console.log("Preparing allowed directions");
+    for (var b = (8 * g.tmtFactor); b <= g.playfieldHeight * (8 * g.tmtFactor); b += (8 * g.tmtFactor)) for (var c = (8 * g.tmtFactor); c <= g.playfieldWidth * (8 * g.tmtFactor); c += (8 * g.tmtFactor)) {
       g.playfield[b][c].allowedDir = 0;
-      if (g.playfield[b - 8][c].path) g.playfield[b][c].allowedDir += 1;
-      if (g.playfield[b + 8][c].path) g.playfield[b][c].allowedDir += 2;
-      if (g.playfield[b][c - 8].path) g.playfield[b][c].allowedDir += 4;
-      if (g.playfield[b][c + 8].path) g.playfield[b][c].allowedDir += 8
+      if (g.playfield[b - (8 * g.tmtFactor)][c].path) g.playfield[b][c].allowedDir += 1;
+      if (g.playfield[b + (8 * g.tmtFactor)][c].path) g.playfield[b][c].allowedDir += 2;
+      if (g.playfield[b][c - (8 * g.tmtFactor)].path) g.playfield[b][c].allowedDir += 4;
+      if (g.playfield[b][c + (8 * g.tmtFactor)].path) g.playfield[b][c].allowedDir += 8
     }
+    console.log("Allowed directions prepared");
   };
+
+
   g.createDotElements = function () {
-    for (var b = 8; b <= g.playfieldHeight * 8; b += 8) for (var c = 8; c <= g.playfieldWidth * 8; c += 8) if (g.playfield[b][c].dot) {
+    console.log("Creating dot elements");
+    for (var b = (8 * g.tmtFactor); b <= g.playfieldHeight * (8 * g.tmtFactor); b += (8 * g.tmtFactor)) for (var c = (8 * g.tmtFactor); c <= g.playfieldWidth * (8 * g.tmtFactor); c += (8 * g.tmtFactor)) if (g.playfield[b][c].dot) {
       var d = document.createElement("div");
       d.className = "pcm-d";
       d.id = g.getDotElementId(b, c);
-      d.style.left = c + -32 + "px";
+      d.style.left = c + (-32 * g.tmtFactor) + "px";
       d.style.top = b + 0 + "px";
-      g.playfieldEl.appendChild(d)
+      d.setAttribute("data-x", ""+(c/16));
+      d.setAttribute("data-y", ""+(b/16));
+      g.playfieldEl.appendChild(d);
+      //debugger;
     }
+    console.log("Dot elements created");
   };
   g.createEnergizerElements = function () {
+    console.log("Creating Energizer Elements");
     for (var b in p) {
       var c = p[b],
-        d = g.getDotElementId(c.y * 8, c.x * 8);
+        d = g.getDotElementId(c.y * (8 * g.tmtFactor), c.x * (8 * g.tmtFactor));
       document.getElementById(d).className = "pcm-e";
-      g.prepareElement(document.getElementById(d), 0, 144);
-      g.playfield[c.y * 8][c.x * 8].dot = 2
+      //g.prepareElement(document.getElementById(d), 0, (144 * g.tmtFactor));
+        g.prepareElement(document.getElementById(d), 0, 144);
+      g.playfield[c.y * (8 * g.tmtFactor)][c.x * (8 * g.tmtFactor)].dot = 2
     }
+    console.log("Energizer elements created");
   };
+
   g.createFruitElement = function () {
     g.fruitEl = document.createElement("div");
     g.fruitEl.id = "pcm-f";
     g.fruitEl.style.left = g.getPlayfieldX(v[1]) + "px";
     g.fruitEl.style.top = g.getPlayfieldY(v[0]) + "px";
-    g.prepareElement(g.fruitEl, -32, -16);
+    g.prepareElement(g.fruitEl, (-32 * g.tmtFactor), (-16 * g.tmtFactor));
     g.playfieldEl.appendChild(g.fruitEl)
   };
+
   g.createPlayfieldElements = function () {
     g.doorEl = document.createElement("div");
     g.doorEl.id = "pcm-do";
@@ -1982,6 +2060,7 @@ function () {
     g.createEnergizerElements();
     g.createFruitElement()
   };
+
   g.createActors = function () {
     g.actors = [];
     for (var b = 0; b < g.playerCount + 4; b++) {
@@ -1992,6 +2071,7 @@ function () {
       } else g.actors[b].ghost = a
     }
   };
+
   g.restartActors = function () {
     for (var b in g.actors) g.actors[b].A()
   };
@@ -2013,7 +2093,7 @@ function () {
     g.preparePaths();
     g.prepareAllowedDirections();
     g.createPlayfieldElements();
-    g.createActorElements()
+    g.createActorElements();
   };
   g.keyPressed = function (b) {
     var c = e;
@@ -2071,8 +2151,8 @@ function () {
     b -= d[1] - -32;
     c -= d[0] - 0;
     d = g.actors[0];
-    var f = g.getPlayfieldX(d.pos[1] + d.posDelta[1]) + 16,
-      h = g.getPlayfieldY(d.pos[0] + d.posDelta[0]) + 32,
+    var f = g.getPlayfieldX(d.pos[1] + d.posDelta[1]) + (16 * g.tmtFactor),
+      h = g.getPlayfieldY(d.pos[0] + d.posDelta[0]) + (32 * g.tmtFactor),
       j = Math.abs(b - f),
       k = Math.abs(c - h);
     if (j > 8 && k < j) d.requestedDir = b > f ? 8 : 4;
@@ -2246,6 +2326,7 @@ function () {
     g.lives == -1 ? g.changeGameplayMode(8) : g.restartGameplay(e)
   };
   g.switchMainGhostMode = function (b, c) {
+    console.log("Switch Main Ghost Mode");
     if (b == 4 && g.levels.frightTime == 0) for (var d in g.actors) {
       var f = g.actors[d];
       if (f.ghost) f.reverseDirectionsNext = a
@@ -2544,7 +2625,7 @@ function () {
       c.el = d;
       c.elBackgroundPos = [0, 0];
       c.elPos = [0, 0];
-      c.pos = [g.cutscene.actors[b].y * 8, g.cutscene.actors[b].x * 8];
+      c.pos = [g.cutscene.actors[b].y * (8 * g.tmtFactor), g.cutscene.actors[b].x * (8 * g.tmtFactor)];
       c.posDelta = [0, 0];
       c.ghost = g.cutscene.actors[b].ghost;
       g.cutsceneCanvasEl.appendChild(d);
@@ -2845,11 +2926,11 @@ function () {
     for (var b = 0; b < g.scoreDigits; b++) {
       var c = document.createElement("div");
       c.id = "pcm-sc-1-" + b;
-      c.style.top = b * 8 + "px";
+      c.style.top = b * (8 * g.tmtFactor) + "px";
       c.style.left = 0;
       c.style.position = "absolute";
-      c.style.width = "8px";
-      c.style.height = "8px";
+      c.style.width = "16px";
+      c.style.height = "16px";
       g.prepareElement(c, 48, 0);
       g.scoreEl[0].appendChild(c)
     }
@@ -2870,11 +2951,11 @@ function () {
       for (b = 0; b < g.scoreDigits; b++) {
         c = document.createElement("div");
         c.id = "pcm-sc-2-" + b;
-        c.style.top = b * 8 + "px";
+        c.style.top = b * (8 * g.tmtFactor) + "px";
         c.style.left = 0;
         c.style.position = "absolute";
-        c.style.width = "8px";
-        c.style.height = "8px";
+        c.style.width = "16px";
+        c.style.height = "16px";
         g.prepareElement(c, 48, 0);
         g.scoreEl[1].appendChild(c)
       }

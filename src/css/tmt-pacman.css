@@ -18,7 +18,7 @@
 }
 
 #pcm-p, #pcm-cc {
-    left: 45px;
+    left: 90px;
     width: 928px;
     height: 272px;
     z-index: 99;
@@ -26,25 +26,35 @@
 }
 
 #pcm-p .pcm-d {
-    width: 2px;
-    height: 2px;
-    margin-left: 3px;
-    margin-top: 3px;
+    /*width: 2px;*/
+    width: 4px;
+    /*height: 2px;*/
+    height: 4px;
+    /*margin-left: 3px;*/
+    margin-left: 6px;
+    /*margin-top: 3px;*/
+    margin-top: 6px;
     background: #f8b090;
     z-index: 100;
 }
 
 #pcm-p .pcm-e {
-    width: 8px;
-    height: 8px;
+    /*width: 8px;*/
+    width: 16px;
+    /*height: 8px;*/
+    height: 16px;
     z-index: 101;
 }
 
 #pcm-sc-1 {
-    left: 18px;
-    top: 16px;
-    width: 8px;
-    height: 56px;
+    /*left: 18px;*/
+    left: 36px;
+    /*top: 16px;*/
+    top: 32px;
+    /*width: 8px;*/
+    width: 16px;
+    /*height: 56px;*/
+    height: 112px;
     position: absolute;
     overflow: hidden;
 }
@@ -60,10 +70,14 @@
 
 #pcm-le {
     position: absolute;
-    left: 515px;
-    top: 74px;
-    height: 64px;
-    width: 32px;
+    /*left: 515px;*/
+    left: 1030px;
+    /*top: 74px;*/
+    top: 148px;
+    /*height: 64px;*/
+    height: 128px;
+    /*width: 32px;*/
+    width: 64px;
 }
 
 #pcm-le div {
@@ -73,38 +87,52 @@
 #pcm-sc-1-l {
     left: -2px;
     top: 0;
-    width: 48px;
-    height: 8px;
+    /*width: 48px;*/
+    width: 96px;
+    /*height: 8px;*/
+    height: 16px;
 }
 
 #pcm-sc-2-l {
     left: -2px;
     top: 64px;
-    width: 48px;
-    height: 8px;
+    /*width: 48px;*/
+    width: 96px;
+    /*height: 8px;*/
+    height: 16px;
 }
 
 #pcm-so {
-    left: 7px;
-    top: 116px;
-    width: 12px;
-    height: 12px;
-    border: 8px solid black;
+    /*left: 7px;*/
+    left: 14px;
+    /*top: 116px;*/
+    top: 232px;
+    /*width: 12px;*/
+    width: 24px;
+    /*height: 12px;*/
+    height: 24px;
+    /*border: 8px solid black;*/
+    border: 16px solid black;
     cursor: pointer;
 }
 
 #pcm-li {
     position: absolute;
-    left: 523px;
+    /*left: 523px;*/
+    left: 1046px;
     top: 0;
-    height: 80px;
-    width: 16px;
+    /*height: 80px;*/
+    height: 160px;
+    /*width: 16px;*/
+    width: 32px;
 }
 
 #pcm-li .pcm-lif {
     position: relative;
-    width: 16px;
-    height: 12px;
+    /*width: 16px;*/
+    width: 32px;
+    /*height: 12px;*/
+    height: 24px;
     margin-bottom: 3px;
 }
 
@@ -140,8 +168,10 @@
 }
 
 #pcm-f, #pcm-le div {
-    width: 32px;
-    height: 16px;
+    /*width: 32px;*/
+    width: 64px;
+    /*height: 16px;*/
+    height: 32px;
     z-index: 105;
 }
 
@@ -151,27 +181,39 @@
 }
 
 #pcm-do {
-    width: 19px;
-    height: 2px;
-    left: 279px;
-    top: 46px;
+    /*width: 19px;*/
+    width: 38px;
+    /*height: 2px;*/
+    height: 4px;
+    /*left: 279px;*/
+    left: 558px;
+    /*top: 46px;*/
+    top: 92px;
     overflow: hidden;
     position: absolute;
     background: #ffaaa5;
 }
 
 #pcm-re {
-    width: 48px;
-    height: 8px;
+    /*width: 48px;*/
+    width: 96px;
+    /*height: 8px;*/
+    height: 16px;
     z-index: 120;
-    left: 264px;
-    top: 80px;
+    /*left: 264px;*/
+    left: 528px;
+    /*top: 80px;*/
+    top: 160px;
 }
 
 #pcm-go {
-    width: 80px;
-    height: 8px;
+    /*width: 80px;*/
+    width: 160px;
+    /*height: 8px;*/
+    height: 16px;
     z-index: 120;
-    left: 248px;
-    top: 80px;
+    /*left: 248px;*/
+    left: 496px;
+    /*top: 80px;*/
+    top: 160px;
 }
