@@ -2727,7 +2727,7 @@ function () {
         for (var b = 0; b < g.playerCount + 4; b++) g.actors[b].b();
         break;
       case 10:
-        Math.floor(g.gameplayModeTime / (g.timing[11] / 8)) % 2 == 0 ? g.changeElementBkPos(g.playfieldEl, 322, 2, e) : g.changeElementBkPos(g.playfieldEl, 322, 138, e)
+        Math.floor(g.gameplayModeTime / (g.timing[11] / 8)) % 2 == 0 ? g.changeElementBkPos(g.playfieldEl, 322 * g.tmtFactor, 2, e) : g.changeElementBkPos(g.playfieldEl, 322 * g.tmtFactor, 138 * g.tmtFactor, e)
       }
       if (g.gameplayModeTime <= 0) {
         g.gameplayModeTime = 0;
