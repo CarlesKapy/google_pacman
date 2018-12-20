@@ -4,7 +4,8 @@
     border-top: 25px solid black;
     padding-bottom: 25px;
     /*height: 136px;*/
-    height: 372px;
+    /*height: 372px;*/
+    height: 500px;
     position: relative;
     background: black;
     outline: 0;
@@ -27,6 +28,7 @@
 
 #pcm-p .pcm-d {
     /*width: 2px;*/
+    width: 4px;
     width: 4px;
     /*height: 2px;*/
     height: 4px;
