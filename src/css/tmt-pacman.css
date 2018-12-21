@@ -1,5 +1,6 @@
 body {
-    width: 1108px;
+    width: 100vw;
+    min-width: 1108px;
 }
 
 #pcm-c {
@@ -225,12 +226,13 @@ body {
 }
 
 .tmt-overlay {
-    width: 1120px;
-    height: 550px;
+    width: 100%;
+    height: 100%;
+    min-width: 1108px;
     position: absolute;
     top:0;
     left:0;
-    background-color: rgba(0,166,226,100);
+    background-color: black;
     color: white;
     z-index:1100;
     font-family: 'Source Sans Pro';
@@ -253,4 +255,35 @@ body {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+}
+
+.tmt-overlay p {
+    font-size: 2em;
+}
+
+.flex-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    min-width: 1108px;
 }
