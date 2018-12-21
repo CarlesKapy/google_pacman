@@ -4,6 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="shortcut icon" href="https://tmtfactory.com/wp-content/uploads/2015/11/smile.png">
   <title>:tmtfactory) - Merry Xmas</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     window.google = {}
   </script>
@@ -38,8 +40,11 @@
     <link rel="stylesheet" type="text/css" href="src/css/tmt-pacman.css">
 </head>
 <body>
-  <center>
-  <div id="wrapper">
+    <div class="tmt-overlay" style="display:none;">
+        <p>Este juego está optimizado para verse en orientación vertical.</p>
+        <p>This game is optimized for portrait viewing.</p>
+    </div>
+  <div id="wrapper" style="padding-top: 5vh;">
   	<a href="#gameover" id="dlink"></a>
   	<div id='logo' title="PAC-MAN's 30th Birthday! Doodle with PAC-MAN™ & ©1980 NAMCO BANDAI Games Inc.">
   		<div id="logo-l">
@@ -94,10 +99,40 @@
         e();
       }
     };
+
+      $(document).ready(function(){
+
+          var orr = screen.orientation.angle;
+          if (Math.min(window.innerHeight, window.innerWidth) < 650) {
+              if (orr =='0'){
+                  ///portrait view///
+                  $('.tmt-overlay').show();
+              } else if(orr =='-90' || orr== '90'){
+                  ///landscap view///
+                  $('.tmt-overlay').hide();
+              }
+          }
+
+
+          window.addEventListener("orientationchange", function() {
+              var orr = screen.orientation.angle;
+              if (Math.min(window.innerHeight, window.innerWidth) < 650) {
+
+                  if (orr =='0'){
+                      ///portrait view///
+                      $('.tmt-overlay').show();
+                  } else if(orr =='-90' || orr== '90'){
+                      ///landscap view///
+                      $('.tmt-overlay').hide();
+                  }
+              }
+
+          }, false);
+      })
 	</script>
 	
   <form action="#submit" name='f'>
-    <table width="23%" cellpadding='0' cellspacing='0'>
+    <table width="100%" cellpadding='0' cellspacing='0'>
       <tr valign='top'>
         <td align='center' nowrap><br style="line-height:0">
           <span class='ds'>
@@ -120,5 +155,4 @@
     -->
   </div>
   <script>google.pml && google.pml()</script>
-  </center>
 </html>

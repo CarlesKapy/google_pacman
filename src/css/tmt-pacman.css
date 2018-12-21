@@ -1,3 +1,7 @@
+body {
+    width: 1108px;
+}
+
 #pcm-c {
     /*width: 554px;*/
     width: 1108px;
@@ -218,4 +222,35 @@
     left: 496px;
     /*top: 80px;*/
     top: 160px;
+}
+
+.tmt-overlay {
+    width: 1120px;
+    height: 550px;
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: rgba(0,166,226,100);
+    color: white;
+    z-index:1100;
+    font-family: 'Source Sans Pro';
+
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
